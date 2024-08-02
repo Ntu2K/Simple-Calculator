@@ -8,36 +8,37 @@
 </head>
 <body>
     <h1>Simple Calculator</h1>
-    <div>
-        <input type="text" class="input-space">
-        <table id="calcu">
+    <div id="Calculator">
+        <input type="text" class="input-text" input id="display">
+        <table>
+            
         <tr>
-            <td><input type="button" value="7" class="input-button"></td>
-            <td><input type="button" value="8" class="input-button"></td>
-            <td><input type="button" value="9" class="input-button"></td>
-            <td><input type="button" value="~" class="input-button" onclick="Subtract()"></td>
+            <td><input type="button" value="7" class="input-button" onclick="dis('7')"></td>
+            <td><input type="button" value="8" class="input-button" onclick="dis('8')"></td>
+            <td><input type="button" value="9" class="input-button" onclick="dis('9')"></td>
+            <td><input type="button" value="~" class="input-button" onclick="dis('-')" class="Subraction"></td>
         </tr>
         <tr>
-            <td><input type="button" value="4" class="input-button"></td>
-            <td><input type="button" value="5" class="input-button"></td>
-            <td><input type="button" value="6" class="input-button"></td>
-            <td><input type="button" value="+" class="input-button" onclick="Addition()"></td>
+            <td><input type="button" value="4" class="input-button" onclick="dis('4')"></td>
+            <td><input type="button" value="5" class="input-button" onclick="dis('5')"></td>
+            <td><input type="button" value="6" class="input-button" onclick="dis('6')"></td>
+            <td><input type="button" value="+" class="input-button" onclick="dis('+')"></td>
         </tr>
         <tr>
-            <td><input type="button" value="1" class="input-button"></td>
-            <td><input type="button" value="2" class="input-button"></td>
-            <td><input type="button" value="3" class="input-button"></td>
-            <td><input type="button" value="=" class="input-button" onclick="Equal()"></td>
+            <td><input type="button" value="1" class="input-button" onclick="dis('1')"></td>
+            <td><input type="button" value="2" class="input-button" onclick="dis('2')"></td>
+            <td><input type="button" value="3" class="input-button" onclick="dis('3')"></td>
+            <td><input type="button" value="=" class="input-button" onclick="calculate('=')"></td>
         </tr>
         <tr>
-            <td><input type="button" value="0" class="input-button"></td> 
-            <td><input type="button" value="%" class="input-button"></td>
-            <td><input type="button" value="." class="input-button"></td>
-            <td><input type="button" value="x" class="input-button" onclick="Multiply()"></td>
+            <td><input type="button" value="0" class="input-button" onclick="dis('0')"></td> 
+            <td><input type="button" value="%" class="input-button" onclick="dis('/')"></td>
+            <td><input type="button" value="." class="input-button" onclick="dis('.')"></td>
+            <td><input type="button" value="x" class="input-button" onclick="dis('*')"></td>
 
         </tr>
         <tr>
-            <td><input type="button" value="C" class="input-button"></td>
+            <td><input type="button" value="C" class="input-button" onclick="clr('c')"></td>
 
 
         </tr>
@@ -45,19 +46,43 @@
         
     </table>
 </div>
-    <script src="functions">
-        const Multiply = () => {
+    <script>
+        const display = document.getElementById("display");
+
+        function dis(input){
+            display.value += input;
+        }
+
+        function Calculator(){
+            display.value =eval(display.value);
+        } 
+        
+        function clr() {
+           display.value=""
+        }
+
+        function calculate(){
+            try{
+                display.value =eval(display.value)
+            }
+            catch(error){
+                display.value = "Error";
+            }
+            
 
         }
-        const Subtract = () => {
-
-        }
-        const Addition = () => {
-
-        }
-        const Equal = () => {
-
-        }
+         
+        function myFunction(event) { 
+            if (event.key == '0' || event.key == '1' 
+                || event.key == '2' || event.key == '3' 
+                || event.key == '4' || event.key == '5' 
+                || event.key == '6' || event.key == '7' 
+                || event.key == '8' || event.key == '9' 
+                || event.key == '+' || event.key == '-' 
+                || event.key == '*' || event.key == '/') 
+                document.getElementById("result").value += event.key; 
+        } 
+        
         
     </script>
     

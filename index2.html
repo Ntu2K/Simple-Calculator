@@ -39,11 +39,22 @@
   
     <script> 
         
+        var sum = 0
          
         function dis(val) { 
             document.getElementById("result").value += val 
+            sum += val
+
         } 
   
+        function clr() {
+            var res = document.getElementById("result").value;
+            // document.getElementById("result").value = 0;
+            document.getElementById("result").value = res.substr(0,res.length-1)
+        }
+
+        
+ 
         function myFunction(event) { 
             if (event.key == '0' || event.key == '1' 
                 || event.key == '2' || event.key == '3' 
